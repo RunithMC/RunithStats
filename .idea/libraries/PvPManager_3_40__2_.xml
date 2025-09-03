@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="PvPManager-3.40 (2)">
-    <CLASSES>
-      <root url="jar://$PROJECT_DIR$/src/main/java/net/runith/runithstats/libraries/PvPManager-3.40.jar!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>

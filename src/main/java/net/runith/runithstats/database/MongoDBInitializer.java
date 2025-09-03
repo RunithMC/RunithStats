@@ -4,8 +4,7 @@ import com.mongodb.*;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoCollection;
-import com.mongodb.client.MongoDatabase;
-import net.runith.runithstats.RunithStats;
+import net.runith.runithstats.RunithStatsPlugin;
 import org.bson.Document;
 import org.bson.UuidRepresentation;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -16,7 +15,7 @@ import java.util.concurrent.ExecutorService;
 
 public final class MongoDBInitializer {
 
-    public static DatabaseManager initialize(final RunithStats plugin) throws MongoException {
+    public static MongoDatabase initialize(final RunithStatsPlugin plugin) throws MongoException {
         FileConfiguration config = plugin.getConfig();
 
         final String user = config.getString("database.user", "admin");
@@ -51,7 +50,7 @@ public final class MongoDBInitializer {
 
         try {
             final MongoClient client = MongoClients.create(settings);
-            final MongoDatabase mongoDatabase = client.getDatabase(databaseName);
+            final com.mongodb.client.MongoDatabase mongoDatabase = client.getDatabase(databaseName);
 
             mongoDatabase.runCommand(new Document("ping", 1));
 
@@ -59,7 +58,7 @@ public final class MongoDBInitializer {
 
             final ExecutorService executor = Executors.newFixedThreadPool(threadsPool);
 
-            return new DatabaseManager(executor, client, mongoCollection);
+            return new MongoDatabase(executor, client, mongoCollection);
 
         } catch (Exception e) {
             throw new MongoException("Failed to initialize MongoDB: " + e.getMessage(), e);

@@ -1,6 +1,6 @@
 name: RunithStats
 version: '1.0-SNAPSHOT'
-main: net.runith.runithstats.RunithStats
+main: net.runith.runithstats.RunithStatsPlugin
 api-version: 1.8
 authors: [Runith]
 website: https://github.com/RunithMC

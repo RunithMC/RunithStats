@@ -1,26 +1,24 @@
 package net.runith.runithstats.listeners;
 
-import net.runith.runithstats.managers.StatsManager;
+import lombok.RequiredArgsConstructor;
+import net.runith.runithstats.storage.PlayersStatsStorage;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 
+@RequiredArgsConstructor
 public class PlayerListener implements Listener {
 
-    private final StatsManager statsManager;
-
-    public PlayerListener(StatsManager statsManager) {
-        this.statsManager = statsManager;
-    }
+    private final PlayersStatsStorage playersStatsStorage;
 
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent event) {
-        statsManager.loadPlayerStats(event.getPlayer());
+        playersStatsStorage.loadPlayerStats(event.getPlayer());
     }
 
     @EventHandler
     public void onPlayerQuit(PlayerQuitEvent event) {
-        statsManager.savePlayerStats(event.getPlayer());
+        playersStatsStorage.savePlayerStats(event.getPlayer());
     }
 }

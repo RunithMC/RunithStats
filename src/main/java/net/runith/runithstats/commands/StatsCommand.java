@@ -1,6 +1,6 @@
 package net.runith.runithstats.commands;
 
-import net.runith.runithstats.managers.StatsManager;
+import net.runith.runithstats.storage.PlayersStatsStorage;
 import net.runith.runithstats.database.PlayerStats;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
@@ -15,13 +15,14 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
+import java.util.concurrent.TimeUnit;
 
 public class StatsCommand implements CommandExecutor, TabCompleter {
 
-    private final StatsManager statsManager;
+    private final PlayersStatsStorage playersStatsStorage;
 
-    public StatsCommand(StatsManager statsManager) {
-        this.statsManager = statsManager;
+    public StatsCommand(PlayersStatsStorage playersStatsStorage) {
+        this.playersStatsStorage = playersStatsStorage;
     }
 
     @Override
@@ -32,7 +33,7 @@ public class StatsCommand implements CommandExecutor, TabCompleter {
                 return true;
             }
 
-            PlayerStats stats = statsManager.getPlayerStats(player.getUniqueId());
+            PlayerStats stats = playersStatsStorage.getPlayerStats(player.getUniqueId());
 
             if (stats == null) {
                 sender.sendMessage("§cTus estadísticas no están cargadas. Vuelve a conectarte.");
@@ -43,7 +44,7 @@ public class StatsCommand implements CommandExecutor, TabCompleter {
             sender.sendMessage("§eKills: §f" + stats.getKills());
             sender.sendMessage("§eDeaths: §f" + stats.getDeaths());
             sender.sendMessage("§eKDR: §f" + String.format("%.2f", stats.getKDR()));
-            sender.sendMessage("§eTiempo jugado: §f" + stats.getPlaytimeHours() + " horas");
+            sender.sendMessage("§eTiempo jugado: §f" + TimeUnit.MILLISECONDS.toHours(stats.getPlayTime()) + " horas");
             return true;
         }
 
@@ -72,17 +73,17 @@ public class StatsCommand implements CommandExecutor, TabCompleter {
                 uuid = target.getUniqueId();
                 displayName = target.getName();
             } else {
-                Optional<PlayerStats> offlineStats = statsManager.getOfflinePlayerStats(playerName).join();
-                if (offlineStats.isPresent()) {
-                    uuid = offlineStats.get().getUuid();
-                    displayName = offlineStats.get().getName();
+                Optional<PlayerStats> onlineStats = playersStatsStorage.getCachedPlayerStats(playerName);
+                if (onlineStats.isPresent()) {
+                    uuid = onlineStats.get().getUuid();
+                    displayName = onlineStats.get().getName();
                 } else {
                     sender.sendMessage("§cJugador no encontrado.");
                     return true;
                 }
             }
 
-            PlayerStats stats = statsManager.getPlayerStats(uuid);
+            PlayerStats stats = playersStatsStorage.getPlayerStats(uuid);
             if (stats == null) {
                 sender.sendMessage("§cNo se pudieron cargar las estadísticas del jugador.");
                 return true;
@@ -102,7 +103,7 @@ public class StatsCommand implements CommandExecutor, TabCompleter {
                     return true;
             }
 
-            statsManager.savePlayerStats(Bukkit.getPlayer(uuid));
+            playersStatsStorage.savePlayerStats(Bukkit.getPlayer(uuid));
             return true;
         }
 
