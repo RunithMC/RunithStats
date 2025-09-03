@@ -38,13 +38,10 @@ public final class PlayersStatsStorage {
     public void savePlayerStats(final Player player) {
         final UUID uuid = player.getUniqueId();
 
-        final PlayerStats stats = cachedStats.get(uuid);
-        if (stats == null) {
-            return;
+        final PlayerStats stats = cachedStats.remove(uuid);
+        if (stats != null) {
+            executorService.execute(() -> playerStatsRepository.save(stats));
         }
-
-        executorService.execute(() -> playerStatsRepository.save(stats));
-        cachedStats.remove(uuid);
     }
 
     public void saveAllStats() {
