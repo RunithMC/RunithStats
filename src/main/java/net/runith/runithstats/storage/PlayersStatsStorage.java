@@ -43,10 +43,7 @@ public final class PlayersStatsStorage {
             return;
         }
 
-        executorService.execute(() -> {
-            stats.setTotalPlayTime(System.currentTimeMillis() - stats.getSessionJoinDate());
-            playerStatsRepository.save(stats);
-        });
+        executorService.execute(() -> playerStatsRepository.save(stats));
         cachedStats.remove(uuid);
     }
 
