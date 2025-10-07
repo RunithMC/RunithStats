@@ -64,7 +64,9 @@ public final class PlaceholderAPIHook extends PlaceholderExpansion {
         if (top == null || index >= top.size()) return "";
 
         var entry = top.get(index);
-        return entry.getKey() + ChatColor.DARK_GRAY + " ► " + ChatColor.AQUA + entry.getValue();
+        return entry.getKey() + ChatColor.DARK_GRAY + " ► " + ChatColor.AQUA + (type.equalsIgnoreCase("playtime")
+            ? TimeFormatter.format(entry.getValue().longValue() / 1000)
+            : entry.getValue());
     }
 
     private @NotNull String handleLeaderboardPosition(Player player, final String identifier) {
