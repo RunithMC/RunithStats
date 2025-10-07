@@ -3,6 +3,9 @@ package net.runith.runithstats;
 import net.runith.runithstats.commands.StatsCommand;
 import net.runith.runithstats.database.MongoDatabase;
 import net.runith.runithstats.database.MongoDBInitializer;
+import net.runith.runithstats.leaderboard.LeaderboardLoader;
+import net.runith.runithstats.leaderboard.LeaderboardUpdateTask;
+import net.runith.runithstats.leaderboard.Leaderboards;
 import net.runith.runithstats.listeners.PlayerListener;
 import net.runith.runithstats.listeners.PvPListener;
 import net.runith.runithstats.hook.PvPManagerHook;
@@ -21,7 +24,7 @@ public final class RunithStatsPlugin extends JavaPlugin {
         saveDefaultConfig();
 
         try {
-            this.mongoDatabase = MongoDBInitializer.initialize(this);
+            this.mongoDatabase = MongoDBInitializer.initialize(getConfig());
             getLogger().info("Conexión a MongoDB establecida correctamente");
         } catch (Exception e) {
             getLogger().severe("Error al conectar con MongoDB: " + e.getMessage());
@@ -39,8 +42,12 @@ public final class RunithStatsPlugin extends JavaPlugin {
 
         getCommand("runithstats").setExecutor(new StatsCommand(playersStatsStorage));
 
+        final Leaderboards leaderboards = new Leaderboards();
+        new LeaderboardLoader(playersStatsStorage.getPlayerStatsRepository(), leaderboards, this.mongoDatabase.executor(), getLogger()).load();
+        getServer().getScheduler().runTaskTimer(this, new LeaderboardUpdateTask(playersStatsStorage, leaderboards), 20L, 20 * 60L);
+
         if (Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
-            new PlaceholderAPIHook(playersStatsStorage).register();
+            new PlaceholderAPIHook(playersStatsStorage, leaderboards).register();
         }
     }
 

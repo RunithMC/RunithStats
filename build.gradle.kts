@@ -23,6 +23,7 @@ dependencies {
 
     implementation("org.mongodb:mongodb-driver-sync:5.5.1")
     implementation("org.mongodb:mongodb-driver-core:5.5.1")
+    compileOnly("it.unimi.dsi:fastutil:8.5.15")
 
     compileOnly("org.projectlombok:lombok:1.18.38")
     annotationProcessor("org.projectlombok:lombok:1.18.38")
@@ -34,7 +35,13 @@ dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter")
 }
 
-tasks.shadowJar {}
+tasks.shadowJar {
+    archiveFileName = "RunithStats.jar"
+
+    relocate("org.mongodb", "net.runith.stats.libs.mongodb")
+    relocate("org.bson", "net.runith.stats.libs.bson")
+    relocate("com.mongodb", "net.runith.stats.libs.mongodb_legacy")
+}
 tasks.test {
     useJUnitPlatform()
 }

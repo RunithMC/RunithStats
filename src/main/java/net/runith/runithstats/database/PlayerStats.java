@@ -12,7 +12,7 @@ import java.util.UUID;
 public final class PlayerStats {
     private final UUID uuid;
     private final String name;
-    private final long sessionJoinDate;
+    private final long sessionJoinDate = System.currentTimeMillis();
 
     private int kills;
     private int deaths;

@@ -1,10 +1,11 @@
-database:
-  user: "admin"
-  password: "password"
-  host: "localhost"
-  port: 27017
-  database: "runithstats"
-  collection: "player_stats"
-  thread-pool: 4
-  connect-timeout-seconds: 3
-  read-timeout-seconds: 2
+uri-enable: false
+uri: "mongodb+srv://test:test@test.rsojstp.mongodb.net/?retryWrites=true&w=majority&appName=Test"
+
+user: "admin"
+password: "password"
+host: "localhost"
+port: 27017
+database: "runithstats"
+collection: "player_stats"
+connect-timeout-seconds: 3
+read-timeout-seconds: 2

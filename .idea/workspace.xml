@@ -4,8 +4,47 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="395136f8-25ba-421d-858a-a1b0e419484f" name="Changes" comment="fix savePlayerStats in PlayersStatsStorage">
+    <list default="true" id="395136f8-25ba-421d-858a-a1b0e419484f" name="Changes" comment="remove redundant &quot;get&quot; method in savePlayerStats">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lombok.config" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/net/runith/runithstats/leaderboard/Leaderboard.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/net/runith/runithstats/leaderboard/LeaderboardLoader.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/net/runith/runithstats/leaderboard/LeaderboardUpdateTask.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/net/runith/runithstats/leaderboard/Leaderboards.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/net/runith/runithstats/leaderboard/LongLeaderboard.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/net/runith/runithstats/util/TimeFormatter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.11/checksums/checksums.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.11/checksums/md5-checksums.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.11/checksums/sha1-checksums.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.11/executionHistory/executionHistory.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.11/executionHistory/executionHistory.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.11/expanded/expanded.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.11/fileChanges/last-build.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.11/fileHashes/fileHashes.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.11/fileHashes/fileHashes.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.11/fileHashes/resourceHashesCache.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.11/gc.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.8/checksums/checksums.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.8/checksums/md5-checksums.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.8/checksums/sha1-checksums.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.8/dependencies-accessors/gc.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.8/fileChanges/last-build.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.8/fileHashes/fileHashes.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.8/fileHashes/fileHashes.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.8/gc.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/runith/runithstats/RunithStatsPlugin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/runith/runithstats/RunithStatsPlugin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/runith/runithstats/database/MongoDBInitializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/runith/runithstats/database/MongoDBInitializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/runith/runithstats/database/PlayerStats.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/runith/runithstats/database/PlayerStats.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/runith/runithstats/database/repository/PlayerStatsRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/runith/runithstats/database/repository/PlayerStatsRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/runith/runithstats/database/repository/Repository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/runith/runithstats/database/repository/Repository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/runith/runithstats/hook/PlaceholderAPIHook.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/runith/runithstats/hook/PlaceholderAPIHook.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/net/runith/runithstats/storage/PlayersStatsStorage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/runith/runithstats/storage/PlayersStatsStorage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/config.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,6 +87,13 @@
       </state>
     </system>
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -63,7 +109,7 @@
     &quot;accountId&quot;: &quot;fb60eb52-33fa-4057-956e-6d375e31b5be&quot;
   }
 }</component>
-  <component name="GradleScriptDefinitionsStorage" workingDir="$PROJECT_DIR$" gradleHome="$USER_HOME$/.gradle/wrapper/dists/gradle-8.14-bin/38aieal9i53h9rfe7vjup95b9/gradle-8.14" javaHome="$USER_HOME$/.jdks/openjdk-24.0.2" gradleVersion="8.14" />
+  <component name="GradleScriptDefinitionsStorage" workingDir="$PROJECT_DIR$" gradleHome="$USER_HOME$/.gradle/wrapper/dists/gradle-8.14-bin/38aieal9i53h9rfe7vjup95b9/gradle-8.14" javaHome="/usr/lib/jvm/zulu-24-amd64" gradleVersion="8.14" />
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 7
 }</component>
@@ -76,15 +122,24 @@
   "keyToString": {
     "Gradle.Download Sources.executor": "Run",
     "Gradle.RunithStats [shadowJar].executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "master",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/home/choco/Escritorio/propio/runith/RunithStats",
+    "last_opened_file_path": "/home/choco/Escritorio/propio/runith/RunithStats/src/main/java/net/runith/runithstats/leaderboard",
     "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/java/net/runith/runithstats/leaderboard" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="net.runith.runithstats.leaderboard" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="RunithStats [shadowJar]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
@@ -149,12 +204,21 @@
       <option name="project" value="LOCAL" />
       <updated>1756904656350</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="remove redundant &quot;get&quot; method in savePlayerStats">
+      <option name="closed" value="true" />
+      <created>1756904888245</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1756904888245</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="improve code quality and finish pvpmanager hook" />
     <MESSAGE value="fix savePlayerStats in PlayersStatsStorage" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix savePlayerStats in PlayersStatsStorage" />
+    <MESSAGE value="remove redundant &quot;get&quot; method in savePlayerStats" />
+    <option name="LAST_COMMIT_MESSAGE" value="remove redundant &quot;get&quot; method in savePlayerStats" />
   </component>
 </project>

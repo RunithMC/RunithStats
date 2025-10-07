@@ -1,19 +1,13 @@
 package net.runith.runithstats.database.repository;
 
 import com.mongodb.client.MongoCollection;
-import com.mongodb.client.model.Filters;
-import com.mongodb.client.model.ReplaceOneModel;
-import com.mongodb.client.model.ReplaceOptions;
-import com.mongodb.client.model.WriteModel;
+import com.mongodb.client.model.*;
 import net.runith.runithstats.database.PlayerStats;
 import org.bson.Document;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Optional;
-import java.util.UUID;
+import java.util.*;
 import java.util.concurrent.TimeUnit;
 
 public record PlayerStatsRepository(MongoCollection<Document> collection) implements Repository<PlayerStats> {
@@ -35,15 +29,28 @@ public record PlayerStatsRepository(MongoCollection<Document> collection) implem
             return Optional.empty();
         }
 
-        return Optional.of(new PlayerStats(
+        return Optional.of(createPlayerStat(uuid, doc));
+    }
+
+    private static @NotNull PlayerStats createPlayerStat(@NotNull UUID uuid, Document doc) {
+        final Long playTime = doc.getLong(PLAYTIME);
+        return new PlayerStats(
             uuid,
             doc.getString(NAME),
-            System.currentTimeMillis(),
-
             doc.getInteger(KILLS, 0),
             doc.getInteger(DEATHS, 0),
-            doc.getInteger(PLAYTIME, 0)
-        ));
+            playTime == null ? 0 : playTime
+        );
+    }
+
+    @Override
+    public List<PlayerStats> findAll() {
+        final List<Document> documents = collection.find().into(new ArrayList<>());
+        final List<PlayerStats> stats = new ArrayList<>();
+        for (final Document document : documents) {
+            stats.add(createPlayerStat((UUID) document.get(ID), document));
+        }
+        return stats;
     }
 
     @Override
@@ -90,9 +97,9 @@ public record PlayerStatsRepository(MongoCollection<Document> collection) implem
             document.append(DEATHS, playerStats.getDeaths());
         }
 
-        playerStats.setTotalPlayTime(System.currentTimeMillis() - playerStats.getSessionJoinDate());
-        if (playerStats.getPlayTime() >= MINIMUM_PLAY_TIME) {
-            document.append(PLAYTIME, playerStats.getPlayTime());
+        final long playTime = playerStats.getPlayTime();
+        if (playTime >= MINIMUM_PLAY_TIME) {
+            document.append(PLAYTIME, playTime);
         }
 
         if (document.isEmpty()) { // Don't save in database if isn't necessary
