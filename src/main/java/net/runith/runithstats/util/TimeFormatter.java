@@ -24,13 +24,13 @@ public final class TimeFormatter {
             return seconds + "s";
         } else if (minutes < 60) {
             long sec = seconds % 60;
-            return sec == 0 ? minutes + "m " :  minutes + "m " + sec + "s";
+            return sec == 0 ? minutes + "m" :  minutes + "m" + sec + " s";
         } else if (hours < 24) {
             long min = (seconds % (60 * 60)) / 60;
-            return min == 0 ? hours + "h " :  hours + "h " + min + "m";
+            return min == 0 ? hours + "h" :  hours + "h" + min + " m";
         } else if (days < 30) {
             long hr = (seconds % (24 * 60 * 60)) / (60 * 60);
-            return hr == 0 ? days + "d " :  days + "d " + hr + "h";
+            return hr == 0 ? days + "d" :  days + "d" + hr + " h";
         } else if (months < 12) {
             long d = (seconds % (30L * 24 * 60 * 60)) / (24 * 60 * 60);
             return months + "m " + d + "d";
