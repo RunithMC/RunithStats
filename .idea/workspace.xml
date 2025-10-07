@@ -4,8 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="395136f8-25ba-421d-858a-a1b0e419484f" name="Changes" comment="add leaderboards and fix problems">
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/runith/runithstats/util/TimeFormatter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/runith/runithstats/util/TimeFormatter.java" afterDir="false" />
+    <list default="true" id="395136f8-25ba-421d-858a-a1b0e419484f" name="Changes" comment="me pegan en casa v2">
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -181,7 +181,23 @@
       <option name="project" value="LOCAL" />
       <updated>1759877036201</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="remove unnecessary space in TimeFormatter">
+      <option name="closed" value="true" />
+      <created>1759877246211</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1759877246211</updated>
+    </task>
+    <task id="LOCAL-00006" summary="me pegan en casa v2">
+      <option name="closed" value="true" />
+      <created>1759877329733</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1759877329734</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -189,6 +205,8 @@
     <MESSAGE value="fix savePlayerStats in PlayersStatsStorage" />
     <MESSAGE value="remove redundant &quot;get&quot; method in savePlayerStats" />
     <MESSAGE value="add leaderboards and fix problems" />
-    <option name="LAST_COMMIT_MESSAGE" value="add leaderboards and fix problems" />
+    <MESSAGE value="remove unnecessary space in TimeFormatter" />
+    <MESSAGE value="me pegan en casa v2" />
+    <option name="LAST_COMMIT_MESSAGE" value="me pegan en casa v2" />
   </component>
 </project>

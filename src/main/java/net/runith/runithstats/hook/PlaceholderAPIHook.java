@@ -96,6 +96,7 @@ public final class PlaceholderAPIHook extends PlaceholderExpansion {
             case "kills" -> String.valueOf(stats.getKills());
             case "deaths" -> String.valueOf(stats.getDeaths());
             case "playtime" -> TimeFormatter.format(stats.getPlayTime() / 1000);
+            case "sessionplaytime" -> TimeFormatter.format(stats.getSessionTime() / 1000);
             case "kdr" -> String.format("%.2f", stats.getKDR());
             default -> null;
         };

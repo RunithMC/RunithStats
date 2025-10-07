@@ -27,7 +27,11 @@ public final class PlayerStats {
         return (double) Math.round((double) kills / deaths * 100) / 100;
     }
 
+    public long getSessionTime() {
+        return (System.currentTimeMillis() - sessionJoinDate);
+    }
+
     public long getPlayTime() {
-        return (System.currentTimeMillis() - sessionJoinDate) + totalPlayTime;
+        return getSessionTime() + totalPlayTime;
     }
 }
